@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>印尼语学习小站</title>
+<style>
+:root{--bg:#f5f7fb;--card:#fff;--ink:#172033;--muted:#667085;--line:#e5eaf2;--primary:#2864dc;--primary2:#eaf1ff;--good:#16845b;--bad:#c43d4b;--shadow:0 8px 28px rgba(24,39,75,.07)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans SC","Microsoft YaHei",sans-serif;line-height:1.55}
+button,input,select,textarea{font:inherit}button{cursor:pointer;border:0;border-radius:11px;padding:10px 14px;background:var(--primary);color:#fff;font-weight:650}button.secondary{background:#eef2f8;color:#263247}button.outline{background:white;color:var(--primary);border:1px solid #cdd9f5}button.danger{background:#fff0f1;color:var(--bad)}button:disabled{opacity:.45;cursor:not-allowed}
+header{background:linear-gradient(120deg,#173c91,#2864dc);color:#fff;padding:24px max(18px,calc((100% - 1120px)/2)) 20px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}.brand{font-size:clamp(22px,4vw,30px);font-weight:800;letter-spacing:.2px}.subtitle{opacity:.85;font-size:14px;margin-top:3px}.top-actions{display:flex;gap:8px;flex-wrap:wrap}.top-actions button{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28)}
+.wrap{max-width:1120px;margin:0 auto;padding:22px 18px 56px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:-2px}.stat{background:var(--card);padding:15px 17px;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}.stat strong{font-size:25px;display:block}.stat span{font-size:13px;color:var(--muted)}
+.tabs{display:flex;gap:8px;overflow:auto;padding:18px 0 12px}.tab{white-space:nowrap;background:#e9edf5;color:#354258}.tab.active{background:var(--primary);color:#fff}
+.panel{display:none}.panel.active{display:block}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:var(--shadow);margin-bottom:14px}.section-head{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:15px}.section-head h2{margin:0;font-size:20px}.muted{color:var(--muted)}.small{font-size:13px}.controls{display:flex;gap:9px;flex-wrap:wrap;align-items:center}.controls input,.controls select,.field input,.field select,.field textarea{border:1px solid #d8deea;border-radius:10px;padding:10px 12px;background:#fff;color:var(--ink);min-width:0}.controls input{flex:1;min-width:180px}.controls select{max-width:190px}
+.word-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.word-card{border:1px solid var(--line);border-radius:15px;padding:16px;background:#fff;display:flex;flex-direction:column;gap:8px;min-width:0}.word-top{display:flex;justify-content:space-between;gap:8px;align-items:start}.indo{font-size:24px;font-weight:800;overflow-wrap:anywhere}.meaning{font-size:17px;font-weight:650}.pill{display:inline-flex;align-items:center;border-radius:999px;background:#eef2f8;color:#4b5870;padding:3px 9px;font-size:12px;margin:2px 4px 2px 0}.pill.blue{background:#eaf1ff;color:#2858b5}.pill.green{background:#e7f7ef;color:#14744e}.example{border-left:3px solid #d8e4ff;padding-left:10px;font-size:14px}.card-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:auto;padding-top:5px}.card-actions button{padding:7px 10px;font-size:13px}
+.empty{padding:35px 15px;text-align:center;color:var(--muted)}.learn-layout{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(260px,.8fr);gap:14px}.flash{min-height:310px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:25px}.flash .indo{font-size:clamp(32px,5vw,48px)}.flash .meaning{font-size:23px;margin:12px}.flash .example{margin:14px 0;text-align:left;max-width:550px}.flash-buttons{display:flex;gap:9px;flex-wrap:wrap;justify-content:center;margin-top:12px}.progress{height:8px;background:#edf0f6;border-radius:20px;overflow:hidden}.progress div{height:100%;background:var(--primary);width:0}
+.quiz-answer{display:grid;gap:9px;margin-top:18px}.quiz-answer button{background:#f1f4fa;color:#253047;text-align:left;border:1px solid #e1e6ef}.quiz-answer button.correct{background:#e5f7ee;border-color:#8bd1ae;color:#126c45}.quiz-answer button.wrong{background:#fff0f1;border-color:#e8a5ac;color:#a82e3b}
+.field-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.field{display:flex;flex-direction:column;gap:5px}.field label{font-size:13px;font-weight:700;color:#4d596c}.field input,.field select,.field textarea{width:100%}.field.full{grid-column:1/-1}.note{background:#fff9e8;border:1px solid #f2dfaa;color:#735b1b;padding:12px 14px;border-radius:12px;font-size:13px}
+table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line);vertical-align:top}th{color:var(--muted);font-size:12px}td button{padding:6px 9px;font-size:12px}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:20px 0 0}
+dialog{border:0;border-radius:18px;padding:0;max-width:620px;width:calc(100% - 28px);box-shadow:0 20px 70px #14213d44}dialog::backdrop{background:#10182888}.modal{padding:22px}.modal h2{margin:0 0 15px}.modal-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:16px;flex-wrap:wrap}
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#172033;color:white;padding:11px 16px;border-radius:12px;box-shadow:var(--shadow);z-index:20;max-width:90vw;font-size:14px}
+@media(max-width:800px){.word-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.stats{grid-template-columns:repeat(2,1fr)}.learn-layout{grid-template-columns:1fr}}
+@media(max-width:520px){.word-grid{grid-template-columns:1fr}.field-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.card{padding:15px}.wrap{padding-inline:12px}.top-actions{width:100%}.top-actions button{flex:1}}
+</style>
+</head>
+<body>
+<header>
+ <div class="top">
+  <div><div class="brand">印尼语学习小站 🇮🇩</div><div class="subtitle">每天积累一点，让印尼语慢慢变成你的语言</div></div>
+  <div class="top-actions">
+   <button id="exportProgressBtn">导出学习记录</button>
+   <button id="exportWordsBtn">导出词汇库</button>
+   <button id="importBtn">导入数据</button>
+  </div>
+ </div>
+</header>
+<main class="wrap">
+ <section class="stats">
+  <div class="stat"><strong id="statTotal">0</strong><span>词汇总量</span></div>
+  <div class="stat"><strong id="statLearned">0</strong><span>已标记掌握</span></div>
+  <div class="stat"><strong id="statDue">0</strong><span>待复习词汇</span></div>
+  <div class="stat"><strong id="statStreak">0</strong><span>累计学习天数</span></div>
+ </section>
+ <nav class="tabs" aria-label="学习功能">
+  <button class="tab active" data-tab="vocab">词汇库</button>
+  <button class="tab" data-tab="learn">学习卡片</button>
+  <button class="tab" data-tab="quiz">记忆测试</button>
+  <button class="tab" data-tab="review">复习与错题</button>
+  <button class="tab" data-tab="manage">管理词汇</button>
+ </nav>
+ <section id="panel-vocab" class="panel active">
+  <div class="card">
+   <div class="section-head"><h2>我的词汇库</h2><span class="muted small" id="vocabCount"></span></div>
+   <div class="controls">
+    <input id="search" placeholder="搜索印尼语、中文或例句…" aria-label="搜索词汇">
+    <select id="topicFilter"><option value="">全部主题</option></select>
+    <select id="levelFilter"><option value="">全部难度</option><option>初级</option><option>中级</option><option>高级</option></select>
+    <select id="statusFilter"><option value="">全部状态</option><option value="new">未掌握</option><option value="learned">已掌握</option><option value="wrong">错题</option></select>
+   </div>
+  </div>
+  <div id="wordGrid" class="word-grid"></div>
+  <div id="vocabEmpty" class="empty" hidden>没有找到符合条件的词汇。</div>
+ </section>
+ <section id="panel-learn" class="panel">
+  <div class="learn-layout">
+   <div class="card flash">
+    <div class="muted small" id="learnPosition">学习卡片</div>
+    <div class="indo" id="learnWord">Selamat datang!</div>
+    <div id="learnMeaning" class="meaning">欢迎！</div>
+    <div id="learnMeta"></div>
+    <div id="learnExample" class="example">Selamat datang di Indonesia. — 欢迎来到印度尼西亚。</div>
+    <div class="flash-buttons">
+     <button class="secondary" id="speakWord">🔊 单词发音</button>
+     <button class="secondary" id="speakExample">🔊 例句发音</button>
+     <button class="outline" id="revealBtn">显示/隐藏释义</button>
+    </div>
+    <div class="flash-buttons">
+     <button class="danger" id="markAgain">还不熟</button>
+     <button id="markKnown">我记住了 ✓</button>
+     <button class="secondary" id="nextCard">下一词 →</button>
+    </div>
+   </div>
+   <div class="card">
+    <div class="section-head"><h2>学习设置</h2></div>
+    <div class="field" style="margin-bottom:14px"><label for="learnTopic">选择主题</label><select id="learnTopic"><option value="">全部主题</option></select></div>
+    <div class="field" style="margin-bottom:14px"><label for="learnMode">学习范围</label><select id="learnMode"><option value="all">全部词汇</option><option value="new">未掌握词汇</option><option value="due">待复习词汇</option><option value="wrong">错题词汇</option></select></div>
+    <div style="margin:15px 0 7px;display:flex;justify-content:space-between"><span class="muted small">本轮进度</span><strong id="roundText">0 / 0</strong></div>
+    <div class="progress"><div id="roundProgress"></div></div>
+    <p class="muted small" style="margin-top:15px">建议：先尝试回忆意思，再翻看中文释义。遇到不熟悉的词，点击“还不熟”，稍后再复习。</p>
+    <div class="note">发音使用浏览器的语音功能。若设备没有印尼语语音包，朗读效果可能不理想。</div>
+   </div>
+  </div>
+ </section>
+ <section id="panel-quiz" class="panel">
+  <div class="card">
+   <div class="section-head"><h2>记忆测试</h2><button class="secondary" id="newQuiz">换一组题目</button></div>
+   <p class="muted small">根据印尼语单词选择正确的中文释义。答错的词会加入错题复习。</p>
+   <div id="quizArea"></div>
+  </div>
+ </section>
+ <section id="panel-review" class="panel">
+  <div class="card">
+   <div class="section-head"><h2>复习与错题</h2><div class="controls"><button class="secondary" id="clearWrong">清空错题标记</button><button id="startReview">开始复习</button></div></div>
+   <p class="muted small">“待复习”依据简单的复习间隔计算。此版本在当前浏览器本地保存数据。</p>
+   <div id="reviewList"></div>
+  </div>
+ </section>
+ <section id="panel-manage" class="panel">
+  <div class="card">
+   <div class="section-head"><h2>添加或编辑词汇</h2><button class="secondary" id="resetForm">清空表单</button></div>
+   <form id="wordForm">
+    <input type="hidden" id="editId">
+    <div class="field-grid">
+     <div class="field"><label for="fWord">印尼语单词 *</label><input id="fWord" required placeholder="例如: berangkat"></div>
+     <div class="field"><label for="fMeaning">中文释义 *</label><input id="fMeaning" required placeholder="例如: 出发"></div>
+     <div class="field"><label for="fPos">词性</label><select id="fPos"><option>动词</option><option>名词</option><option>形容词</option><option>副词</option><option>代词</option><option>介词</option><option>连词</option><option>数词</option><option>短语</option><option>感叹词</option><option>其他</option></select></div>
+     <div class="field"><label for="fTopic">主题</label><input id="fTopic" list="topicOptions" placeholder="例如: 日常生活"><datalist id="topicOptions"></datalist></div>
+     <div class="field"><label for="fLevel">难度</label><select id="fLevel"><option>初级</option><option>中级</option><option>高级</option></select></div>
+     <div class="field"><label for="fCollocations">常见搭配（可选）</label><input id="fCollocations" placeholder="例如: berangkat kerja"></div>
+     <div class="field full"><label for="fExample">印尼语例句</label><textarea id="fExample" rows="2" placeholder="例如: Saya berangkat kerja pukul tujuh."></textarea></div>
+     <div class="field full"><label for="fExampleZh">例句中文翻译</label><textarea id="fExampleZh" rows="2" placeholder="例如: 我七点出发去上班。"></textarea></div>
+     <div class="field full"><label for="fNote">用法提示（可选）</label><textarea id="fNote" rows="2" placeholder="词缀、语体或近义词区别"></textarea></div>
+    </div>
+    <div class="controls" style="margin-top:15px"><button type="submit">保存词汇</button><span class="muted small">相同单词会提醒你检查，避免重复添加。</span></div>
+   </form>
+  </div>
+  <div class="card">
+   <div class="section-head"><h2>数据备份与迁移</h2></div>
+   <p>导出词汇库会保存单词内容；导出学习记录会保存掌握状态、错题与复习时间。建议定期各导出一份。</p>
+   <div class="controls"><button id="exportAllBtn">导出完整备份（JSON）</button><button class="outline" id="importWordsBtn">导入词汇 JSON</button><button class="outline" id="importProgressBtn">导入学习记录 JSON</button></div>
+   <p class="muted small">请将备份文件保存到自己的电脑或云盘。导入前建议先导出当前数据。完整备份恢复会覆盖当前本地数据，请谨慎操作。</p>
+   <div class="note">此页面的数据默认保存在当前浏览器的本地存储中。换设备、换浏览器或清除网站数据前，请先导出备份。</div>
+  </div>
+ </section>
+ <footer>个人学习工具 · 内容可自行扩充 · 数据默认保存在本机浏览器</footer>
+</main>
+<input type="file" id="fileInput" accept=".json,application/json" hidden>
+<dialog id="importDialog"><div class="modal"><h2>导入数据</h2><p>请选择导入类型。若导入完整备份，会替换当前浏览器中的词汇与学习记录。</p><div class="controls"><button id="chooseWords">只导入词汇库</button><button id="chooseProgress">只导入学习记录</button><button class="danger" id="chooseAll">恢复完整备份</button></div><div class="modal-actions"><button class="secondary" id="closeDialog">取消</button></div></div></dialog>
+<script>
+"use strict";
+const STORAGE_KEY = "indonesianStudySite_v1";
+const DAY = 86400000;
+const seedWords = [
+{id:"seed-001",word:"makan",meaning_zh:"吃",part_of_speech:"动词",topic:"饮食",level:"初级",example_id:"Saya makan nasi setiap pagi.",example_zh:"我每天早上吃米饭。",collocations:"makan nasi; makan siang",word_family:"makanan; memakan",usage_note:"makanan 是“食物”，memakan 常表示吃、吞食。"},
+{id:"seed-002",word:"minum",meaning_zh:"喝",part_of_speech:"动词",topic:"饮食",level:"初级",example_id:"Saya minum air putih setelah berolahraga.",example_zh:"运动后我喝白开水。",collocations:"minum air; minum kopi",word_family:"minuman",usage_note:"minuman 是“饮料”。"},
+{id:"seed-003",word:"air",meaning_zh:"水",part_of_speech:"名词",topic:"饮食",level:"初级",example_id:"Tolong beri saya segelas air.",example_zh:"请给我一杯水。",collocations:"air putih; air minum",word_family:"",usage_note:"air putih 通常指白开水。"},
+{id:"seed-004",word:"nasi",meaning_zh:"米饭",part_of_speech:"名词",topic:"饮食",level:"初级",example_id:"Nasi goreng ini sangat enak.",example_zh:"这份炒饭很好吃。",collocations:"nasi goreng; nasi putih",word_family:"",usage_note:"nasi 指煮熟的米饭；beras 指生米。"},
+{id:"seed-005",word:"makanan",meaning_zh:"食物；食品",part_of_speech:"名词",topic:"饮食",level:"初级",example_id:"Makanan khas daerah ini terkenal.",example_zh:"这个地区的特色食物很有名。",collocations:"makanan khas; makanan sehat",word_family:"makan",usage_note:"常用于指食物或某类食品。"},
+{id:"seed-006",word:"enak",meaning_zh:"好吃；美味",part_of_speech:"形容词",topic:"饮食",level:"初级",example_id:"Soto ayam di sini enak sekali.",example_zh:"这里的鸡肉汤非常好吃。",collocations:"enak sekali; terasa enak",word_family:"",usage_note:"也可形容令人愉快、舒服的体验，具体看语境。"},
+{id:"seed-007",word:"sarapan",meaning_zh:"吃早餐；早餐",part_of_speech:"名词",topic:"饮食",level:"初级",example_id:"Saya biasanya sarapan pukul tujuh.",example_zh:"我通常七点吃早餐。",collocations:"sarapan pagi; menu sarapan",word_family:"",usage_note:"可作名词，也可在口语中作动词使用。"},
+{id:"seed-008",word:"pesan",meaning_zh:"点（餐）；订；留言",part_of_speech:"动词",topic:"饮食",level:"初级",example_id:"Saya ingin pesan satu teh hangat.",example_zh:"我想点一杯热茶。",collocations:"pesan makanan; pesan tiket",word_family:"pesanan; memesan",usage_note:"memesan 是常见主动形式；pesanan 可指订单或所订的东西。"},
+{id:"seed-009",word:"tagihan",meaning_zh:"账单；应付金额",part_of_speech:"名词",topic:"购物金钱",level:"中级",example_id:"Bisa minta tagihannya, Pak?",example_zh:"先生，可以给我账单吗？",collocations:"membayar tagihan; tagihan listrik",word_family:"tagih; menagih",usage_note:"餐厅结账也常说 minta bill，正式印尼语可用 tagihan。"},
+{id:"seed-010",word:"mahal",meaning_zh:"贵",part_of_speech:"形容词",topic:"购物金钱",level:"初级",example_id:"Tas itu terlalu mahal bagi saya.",example_zh:"那个包对我来说太贵了。",collocations:"terlalu mahal; harga mahal",word_family:"",usage_note:"反义词 murah，表示便宜。"},
+{id:"seed-011",word:"murah",meaning_zh:"便宜",part_of_speech:"形容词",topic:"购物金钱",level:"初级",example_id:"Pasar ini menjual buah dengan harga murah.",example_zh:"这个市场以便宜的价格卖水果。",collocations:"harga murah; murah meriah",word_family:"",usage_note:"murah meriah 表示价格便宜、实惠。"},
+{id:"seed-012",word:"berapa",meaning_zh:"多少；几",part_of_speech:"代词",topic:"购物金钱",level:"初级",example_id:"Harga satu kilo mangga berapa?",example_zh:"一公斤芒果多少钱？",collocations:"berapa harga; berapa banyak",word_family:"",usage_note:"询问价格时常用 Berapa harganya?"},
+{id:"seed-013",word:"membeli",meaning_zh:"购买",part_of_speech:"动词",topic:"购物金钱",level:"初级",example_id:"Saya ingin membeli buku bahasa Indonesia.",example_zh:"我想买一本印尼语书。",collocations:"membeli tiket; membeli kebutuhan",word_family:"beli; pembeli; pembelian",usage_note:"beli 是口语常见形式，membeli 是标准主动形式。"},
+{id:"seed-014",word:"pasar",meaning_zh:"市场",part_of_speech:"名词",topic:"购物金钱",level:"初级",example_id:"Ibu pergi ke pasar setiap pagi.",example_zh:"妈妈每天早上去市场。",collocations:"pasar tradisional; pasar malam",word_family:"",usage_note:"pasar malam 是夜市。"},
+{id:"seed-015",word:"rumah",meaning_zh:"房子；家",part_of_speech:"名词",topic:"日常生活",level:"初级",example_id:"Rumah saya tidak jauh dari kampus.",example_zh:"我家离校园不远。",collocations:"rumah sakit; rumah makan",word_family:"perumahan; berumah",usage_note:"rumah sakit 是医院，属于固定搭配。"},
+{id:"seed-016",word:"keluarga",meaning_zh:"家庭；家人",part_of_speech:"名词",topic:"日常生活",level:"初级",example_id:"Keluarga saya tinggal di Jawa Tengah.",example_zh:"我的家人住在中爪哇。",collocations:"anggota keluarga; keluarga besar",word_family:"kekeluargaan",usage_note:"keluarga besar 可指大家庭或亲属群体。"},
+{id:"seed-017",word:"bekerja",meaning_zh:"工作",part_of_speech:"动词",topic:"日常生活",level:"初级",example_id:"Kakak saya bekerja di Jakarta.",example_zh:"我哥哥/姐姐在雅加达工作。",collocations:"bekerja keras; tempat bekerja",word_family:"kerja; pekerjaan; pekerja",usage_note:"kerja 常作口语动词或名词；pekerjaan 是工作、职业或工作任务。"},
+{id:"seed-018",word:"belajar",meaning_zh:"学习",part_of_speech:"动词",topic:"学习校园",level:"初级",example_id:"Saya belajar bahasa Indonesia setiap malam.",example_zh:"我每天晚上学习印尼语。",collocations:"belajar bahasa; belajar bersama",word_family:"pelajar; pelajaran; pembelajaran",usage_note:"pelajar 指学生；pelajaran 指课程或功课。"},
+{id:"seed-019",word:"kampus",meaning_zh:"大学校园；大学",part_of_speech:"名词",topic:"学习校园",level:"初级",example_id:"Perpustakaan kampus buka sampai pukul delapan malam.",example_zh:"大学图书馆开放到晚上八点。",collocations:"kampus utama; lingkungan kampus",word_family:"",usage_note:"通常指大学校园，也可借指大学。"},
+{id:"seed-020",word:"perpustakaan",meaning_zh:"图书馆",part_of_speech:"名词",topic:"学习校园",level:"初级",example_id:"Saya meminjam dua buku dari perpustakaan.",example_zh:"我从图书馆借了两本书。",collocations:"perpustakaan umum; kartu perpustakaan",word_family:"pustaka; pustakawan",usage_note:"pustakawan 是图书馆员。"},
+{id:"seed-021",word:"naik",meaning_zh:"乘坐；上升；上（车）",part_of_speech:"动词",topic:"交通出行",level:"初级",example_id:"Saya naik bus ke pusat kota.",example_zh:"我乘公交车去市中心。",collocations:"naik bus; naik kereta",word_family:"menaikkan; kenaikan",usage_note:"naik bus/kereta 指乘坐公交车/火车；menaikkan 是使上升、提高。"},
+{id:"seed-022",word:"turun",meaning_zh:"下；下降；下车",part_of_speech:"动词",topic:"交通出行",level:"初级",example_id:"Saya turun di halte berikutnya.",example_zh:"我在下一站公交站下车。",collocations:"turun bus; turun harga",word_family:"menurunkan; penurunan",usage_note:"turun bus 指下公交车；menurunkan 是使下降或放下。"},
+{id:"seed-023",word:"stasiun",meaning_zh:"车站；火车站",part_of_speech:"名词",topic:"交通出行",level:"初级",example_id:"Kita bertemu di depan stasiun.",example_zh:"我们在车站前见面。",collocations:"stasiun kereta; stasiun utama",word_family:"",usage_note:"若要明确表示火车站，可说 stasiun kereta api。"},
+{id:"seed-024",word:"terlambat",meaning_zh:"迟到；晚点",part_of_speech:"形容词",topic:"日常生活",level:"初级",example_id:"Maaf, saya terlambat karena macet.",example_zh:"抱歉，因为堵车我迟到了。",collocations:"datang terlambat; kereta terlambat",word_family:"lambat; keterlambatan",usage_note:"keterlambatan 是迟到、延误这一情况。"},
+{id:"seed-025",word:"tolong",meaning_zh:"请；帮忙",part_of_speech:"感叹词",topic:"日常生活",level:"初级",example_id:"Tolong ulangi kalimat itu sekali lagi.",example_zh:"请再重复一遍那个句子。",collocations:"tolong bantu; minta tolong",word_family:"pertolongan; menolong",usage_note:"提出请求时常放在句首；minta tolong 是请人帮忙。"},
+{id:"seed-026",word:"terima kasih",meaning_zh:"谢谢",part_of_speech:"短语",topic:"日常生活",level:"初级",example_id:"Terima kasih atas bantuan Anda.",example_zh:"感谢您的帮助。",collocations:"terima kasih banyak; sama-sama",word_family:"",usage_note:"回应感谢常说 sama-sama 或 terima kasih kembali。"},
+{id:"seed-027",word:"permisi",meaning_zh:"打扰一下；借过；失陪",part_of_speech:"感叹词",topic:"日常生活",level:"初级",example_id:"Permisi, apakah kursi ini kosong?",example_zh:"打扰一下，请问这个座位有人吗？",collocations:"permisi dulu; permisi lewat",word_family:"",usage_note:"常用于礼貌地引起注意、借过或离开。"},
+{id:"seed-028",word:"sehat",meaning_zh:"健康",part_of_speech:"形容词",topic:"日常生活",level:"初级",example_id:"Semoga Anda selalu sehat.",example_zh:"祝你一直健康。",collocations:"hidup sehat; tetap sehat",word_family:"kesehatan; menyehatkan",usage_note:"kesehatan 是健康、卫生或医疗健康领域。"},
+{id:"seed-029",word:"cuaca",meaning_zh:"天气",part_of_speech:"名词",topic:"日常生活",level:"初级",example_id:"Cuaca hari ini panas dan cerah.",example_zh:"今天天气炎热晴朗。",collocations:"ramalan cuaca; cuaca buruk",word_family:"",usage_note:"常与 panas（热）、hujan（下雨）、cerah（晴朗）搭配。"},
+{id:"seed-030",word:"perjalanan",meaning_zh:"旅程；出行",part_of_speech:"名词",topic:"交通出行",level:"中级",example_id:"Perjalanan dari Kudus ke Semarang memakan waktu sekitar dua jam.",example_zh:"从库杜斯到三宝垄的行程大约需要两个小时。",collocations:"perjalanan jauh; perjalanan dinas",word_family:"jalan; berjalan; bepergian",usage_note:"perjalanan 指旅程或行程；bepergian 强调外出、旅行。"}
+];
+const clone = x => JSON.parse(JSON.stringify(x));
+function defaultState(){return {version:1,words:clone(seedWords),progress:{},wrong:[],streakDays:[],quiz:{total:0,correct:0},lastActive:""}}
+let state;
+try { const saved=localStorage.getItem(STORAGE_KEY); state=saved?JSON.parse(saved):defaultState(); } catch(e){ state=defaultState(); }
+if(!state || !Array.isArray(state.words) || !state.progress) state=defaultState();
+state.words=state.words.map(normalizeWord);
+function normalizeWord(w,i){return {id:String(w.id||("word-"+Date.now()+"-"+i)),word:String(w.word||"").trim(),meaning_zh:String(w.meaning_zh||w.meaning||w.translation||"").trim(),part_of_speech:String(w.part_of_speech||w.pos||"其他"),topic:String(w.topic||"未分类"),level:String(w.level||"初级"),example_id:String(w.example_id||w.example||""),example_zh:String(w.example_zh||""),collocations:String(w.collocations||""),word_family:String(w.word_family||""),usage_note:String(w.usage_note||w.note||"")}}
+let currentTab="vocab",learnQueue=[],learnIndex=0,meaningVisible=true,quizQuestions=[],quizIndex=0,quizAnswered=false,importType="all",toastTimer;
+const $=id=>document.getElementById(id);
+const today=()=>new Date().toISOString().slice(0,10);
+function save(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state));}catch(e){notify("浏览器存储空间不足，请立即导出备份。");}}
+function notify(msg){let el=document.querySelector(".toast");if(el)el.remove();el=document.createElement("div");el.className="toast";el.textContent=msg;document.body.appendChild(el);clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.remove(),3200)}
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function getProg(id){return state.progress[id]||(state.progress[id]={known:false,seen:0,correct:0,wrong:0,nextReview:0,lastSeen:0})}
+function markActivity(){let d=today();if(!state.streakDays.includes(d))state.streakDays.push(d);state.lastActive=d;save();renderStats()}
+function isDue(w){const p=state.progress[w.id];return !!(p&&p.nextReview&&p.nextReview<=Date.now())}
+function topics(){return [...new Set(state.words.map(w=>w.topic||"未分类"))].sort((a,b)=>a.localeCompare(b,"zh"))}
+function populateTopics(){let opts=topics();["topicFilter","learnTopic"].forEach(id=>{let el=$(id),old=el.value;el.innerHTML='<option value="">全部主题</option>'+opts.map(t=>`<option value="${esc(t)}">${esc(t)}</option>`).join("");if(opts.includes(old))el.value=old});$("topicOptions").innerHTML=opts.map(t=>`<option value="${esc(t)}"></option>`).join("")}
+function renderStats(){let learned=state.words.filter(w=>state.progress[w.id]?.known).length;let due=state.words.filter(isDue).length;$("statTotal").textContent=state.words.length;$("statLearned").textContent=learned;$("statDue").textContent=due;$("statStreak").textContent=state.streakDays.length}
+function renderAll(){populateTopics();renderStats();renderWords();renderReview();if(!learnQueue.length)resetLearnQueue(false);renderLearn();if(!quizQuestions.length)makeQuiz(false);renderQuiz()}
+function switchTab(tab){currentTab=tab;document.querySelectorAll(".tab").forEach(b=>b.classList.toggle("active",b.dataset.tab===tab));document.querySelectorAll(".panel").forEach(p=>p.classList.toggle("active",p.id==="panel-"+tab));if(tab==="learn")renderLearn();if(tab==="quiz")renderQuiz();if(tab==="review")renderReview();if(tab==="manage"){}}
+function wordCard(w){let p=state.progress[w.id]||{};return `<article class="word-card"><div class="word-top"><div class="indo">${esc(w.word)}</div><span class="pill blue">${esc(w.level)}</span></div><div class="meaning">${esc(w.meaning_zh)}</div><div><span class="pill">${esc(w.part_of_speech)}</span><span class="pill">${esc(w.topic)}</span>${p.known?'<span class="pill green">已掌握</span>':''}${state.wrong.includes(w.id)?'<span class="pill" style="background:#fff0f1;color:#a82e3b">错题</span>':''}</div>${w.example_id?`<div class="example">${esc(w.example_id)}${w.example_zh?`<div class="muted">${esc(w.example_zh)}</div>`:""}</div>`:""}${w.collocations?`<div class="small muted">搭配：${esc(w.collocations)}</div>`:""}<div class="card-actions"><button class="secondary" data-speak="${esc(w.id)}">🔊 发音</button><button class="outline" data-edit="${esc(w.id)}">编辑</button><button class="secondary" data-learn="${esc(w.id)}">学习</button></div></article>`}
+function renderWords(){let q=$("search").value.trim().toLowerCase(),topic=$("topicFilter").value,level=$("levelFilter").value,status=$("statusFilter").value;let list=state.words.filter(w=>{let p=state.progress[w.id]||{};let text=[w.word,w.meaning_zh,w.example_id,w.example_zh,w.topic,w.collocations,w.usage_note].join(" ").toLowerCase();return (!q||text.includes(q))&&(!topic||w.topic===topic)&&(!level||w.level===level)&&(!status||(status==="new"&&!p.known)||(status==="learned"&&p.known)||(status==="wrong"&&state.wrong.includes(w.id)))});$("wordGrid").innerHTML=list.map(wordCard).join("");$("vocabEmpty").hidden=list.length>0;$("vocabCount").textContent=`显示 ${list.length} / ${state.words.length} 个词`; }
+function speak(text){if(!("speechSynthesis"in window)){notify("当前浏览器不支持语音朗读。");return}speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(text);u.lang="id-ID";u.rate=.88;let voices=speechSynthesis.getVoices();let voice=voices.find(v=>v.lang&&v.lang.toLowerCase().startsWith("id"));if(voice)u.voice=voice;else notify("正在尝试使用系统语音；若发音不准确，请安装印尼语语音包。");speechSynthesis.speak(u)}
+function resetLearnQueue(resetIndex=true){let topic=$("learnTopic")?.value||"",mode=$("learnMode")?.value||"all";learnQueue=state.words.filter(w=>{let p=state.progress[w.id]||{};return (!topic||w.topic===topic)&&(mode==="all"||(mode==="new"&&!p.known)||(mode==="due"&&isDue(w))||(mode==="wrong"&&state.wrong.includes(w.id)))}).map(w=>w.id);if(resetIndex)learnIndex=0;else learnIndex=Math.min(learnIndex,Math.max(0,learnQueue.length-1));}
+function activeLearnWord(){return state.words.find(w=>w.id===learnQueue[learnIndex])}
+function renderLearn(){let w=activeLearnWord();if(!w){$("learnWord").textContent="本轮没有词汇";$("learnMeaning").textContent="请调整学习范围，或先添加词汇。";$("learnExample").textContent="";$("learnMeta").innerHTML="";$("learnPosition").textContent="学习卡片";$("roundText").textContent="0 / 0";$("roundProgress").style.width="0%";return}let p=getProg(w.id);$("learnWord").textContent=w.word;$("learnMeaning").textContent=meaningVisible?w.meaning_zh:"点击“显示/隐藏释义”查看";$("learnMeta").innerHTML=`<span class="pill">${esc(w.part_of_speech)}</span><span class="pill">${esc(w.topic)}</span><span class="pill">${esc(w.level)}</span>`;$("learnExample").innerHTML=`${esc(w.example_id||"暂无例句")}${w.example_zh?`<div class="muted">${esc(w.example_zh)}</div>`:""}${w.usage_note?`<div class="muted small" style="margin-top:6px">用法：${esc(w.usage_note)}</div>`:""}`;$("learnPosition").textContent=`第 ${learnIndex+1} / ${learnQueue.length} 个 · 已看 ${p.seen||0} 次`;$("roundText").textContent=`${Math.min(learnIndex+1,learnQueue.length)} / ${learnQueue.length}`;$("roundProgress").style.width=(learnQueue.length?Math.min(100,(learnIndex+1)/learnQueue.length*100):0)+"%"}
+function markWord(known){let w=activeLearnWord();if(!w)return;let p=getProg(w.id);p.seen=(p.seen||0)+1;p.lastSeen=Date.now();if(known){p.known=true;p.correct=(p.correct||0)+1;state.wrong=state.wrong.filter(id=>id!==w.id);let intervals=[1,3,7,14,30];p.nextReview=Date.now()+intervals[Math.min((p.correct||1)-1,intervals.length-1)]*DAY;notify("已标记掌握，并安排后续复习。")}else{p.known=false;p.wrong=(p.wrong||0)+1;p.nextReview=Date.now()+10*60*1000;if(!state.wrong.includes(w.id))state.wrong.push(w.id);notify("已加入错题与稍后复习。")}markActivity();renderStats();renderWords();renderReview();renderLearn()}
+function nextLearn(){if(!learnQueue.length)return;learnIndex=(learnIndex+1)%learnQueue.length;meaningVisible=true;renderLearn()}
+function makeQuiz(announce=true){let pool=state.words.slice();if(pool.length<2){quizQuestions=[];return}pool.sort(()=>Math.random()-.5);quizQuestions=pool.slice(0,Math.min(10,pool.length)).map(w=>{let distractors=pool.filter(x=>x.id!==w.id).sort(()=>Math.random()-.5).slice(0,3);let opts=[w,...distractors].sort(()=>Math.random()-.5);return {id:w.id,options:opts.map(x=>({id:x.id,text:x.meaning_zh})),answered:false,choice:null}});quizIndex=0;quizAnswered=false;if(announce)notify("已生成新一组测试题。");renderQuiz()}
+function renderQuiz(){let area=$("quizArea");if(!quizQuestions.length){area.innerHTML='<div class="empty">词汇数量不足，请先添加至少两个词。</div>';return}let q=quizQuestions[quizIndex],w=state.words.find(x=>x.id===q.id);if(!w){area.innerHTML="题目数据不存在，请重新生成。";return}let score=state.quiz.correct||0;area.innerHTML=`<div class="muted small">第 ${quizIndex+1} / ${quizQuestions.length} 题 · 累计答题 ${state.quiz.total||0} 次，答对 ${score} 次</div><h2 style="font-size:clamp(28px,5vw,40px);margin:16px 0 4px">${esc(w.word)}</h2><div class="muted">${esc(w.part_of_speech)} · ${esc(w.topic)}</div><div class="quiz-answer">${q.options.map(o=>`<button data-answer="${esc(o.id)}" class="${q.answered?(o.id===w.id?"correct":o.id===q.choice?"wrong":""):""}" ${q.answered?"disabled":""}>${esc(o.text)}</button>`).join("")}</div>${q.answered?`<div class="card" style="margin-top:15px;background:#f8faff;box-shadow:none"><strong>${q.choice===w.id?"回答正确！":"正确答案："+esc(w.meaning_zh)}</strong>${w.example_id?`<div style="margin-top:7px">${esc(w.example_id)}</div><div class="muted">${esc(w.example_zh)}</div><button class="secondary" data-quiz-speak="${esc(w.id)}" style="margin-top:8px">🔊 朗读例句</button>`:""}<div class="controls" style="margin-top:14px"><button id="quizNext">${quizIndex===quizQuestions.length-1?"查看完成情况":"下一题"}</button></div></div>`:""}`;
+ if(q.answered){$("quizNext").addEventListener("click",()=>{if(quizIndex<quizQuestions.length-1){quizIndex++;renderQuiz()}else{area.innerHTML=`<div class="empty"><h2>本轮完成！</h2><p>你完成了 ${quizQuestions.length} 道题。错题已加入复习列表。</p><button id="quizAgain">再测一轮</button></div>`;$("quizAgain").addEventListener("click",()=>makeQuiz())}})}
+}
+function answerQuiz(id){let q=quizQuestions[quizIndex];if(!q||q.answered)return;let w=state.words.find(x=>x.id===q.id);q.choice=id;q.answered=true;state.quiz.total=(state.quiz.total||0)+1;let p=getProg(w.id);p.seen=(p.seen||0)+1;p.lastSeen=Date.now();if(id===w.id){state.quiz.correct=(state.quiz.correct||0)+1;p.correct=(p.correct||0)+1;p.known=true;p.nextReview=Date.now()+[1,3,7,14,30][Math.min((p.correct||1)-1,4)]*DAY;state.wrong=state.wrong.filter(x=>x!==w.id)}else{p.wrong=(p.wrong||0)+1;p.known=false;p.nextReview=Date.now()+10*60*1000;if(!state.wrong.includes(w.id))state.wrong.push(w.id)}markActivity();renderStats();renderWords();renderReview();renderQuiz()}
+function renderReview(){let due=state.words.filter(isDue),wrong=state.words.filter(w=>state.wrong.includes(w.id));let list=[...new Map([...wrong,...due].map(w=>[w.id,w])).values()];if(!list.length){$("reviewList").innerHTML='<div class="empty">目前没有待复习或错题词汇。学习或测试后，这里会显示需要复习的内容。</div>';return}$("reviewList").innerHTML=`<p class="small muted">错题 ${wrong.length} 个 · 到期复习 ${due.length} 个</p><div style="overflow:auto"><table><thead><tr><th>印尼语</th><th>中文释义</th><th>状态</th><th>操作</th></tr></thead><tbody>${list.map(w=>`<tr><td><strong>${esc(w.word)}</strong><div class="muted small">${esc(w.topic)}</div></td><td>${esc(w.meaning_zh)}</td><td>${state.wrong.includes(w.id)?'<span class="pill">错题</span>':''}${isDue(w)?'<span class="pill green">待复习</span>':''}</td><td><button class="secondary" data-review-speak="${esc(w.id)}">发音</button> <button data-review-learn="${esc(w.id)}">学习</button></td></tr>`).join("")}</tbody></table></div>`}
+function resetForm(){ $("wordForm").reset();$("editId").value="";$("fPos").value="动词";$("fLevel").value="初级";$("wordForm").querySelector('button[type="submit"]').textContent="保存词汇"}
+function editWord(id){let w=state.words.find(x=>x.id===id);if(!w)return;switchTab("manage");$("editId").value=w.id;$("fWord").value=w.word;$("fMeaning").value=w.meaning_zh;$("fPos").value=w.part_of_speech;$("fTopic").value=w.topic;$("fLevel").value=w.level;$("fCollocations").value=w.collocations;$("fExample").value=w.example_id;$("fExampleZh").value=w.example_zh;$("fNote").value=w.usage_note;$("wordForm").querySelector('button[type="submit"]').textContent="保存修改";window.scrollTo({top:0,behavior:"smooth"})}
+function formSave(e){e.preventDefault();let id=$("editId").value,word=$("fWord").value.trim(),meaning=$("fMeaning").value.trim();if(!word||!meaning)return;let duplicate=state.words.find(w=>w.word.toLowerCase()===word.toLowerCase()&&w.id!==id);if(duplicate&&!confirm(`词汇库中已有“${duplicate.word}”（${duplicate.meaning_zh}）。仍然保存吗？`))return;let data=normalizeWord({id:id||("custom-"+Date.now()+"-"+Math.random().toString(36).slice(2,7)),word,meaning_zh:meaning,part_of_speech:$("fPos").value,topic:$("fTopic").value.trim()||"未分类",level:$("fLevel").value,collocations:$("fCollocations").value.trim(),example_id:$("fExample").value.trim(),example_zh:$("fExampleZh").value.trim(),usage_note:$("fNote").value.trim()});if(id){let i=state.words.findIndex(w=>w.id===id);if(i>=0)state.words[i]=data}else state.words.push(data);save();resetForm();renderAll();switchTab("vocab");notify(id?"词汇已更新。":"已添加新词汇。")}
+function download(name,data){let blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json;charset=utf-8"});let url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+function exportWords(){download("indonesian-vocabulary-"+today()+".json",{format:"indonesian-vocabulary-v1",exportedAt:new Date().toISOString(),words:state.words})}
+function exportProgress(){download("indonesian-study-progress-"+today()+".json",{format:"indonesian-progress-v1",exportedAt:new Date().toISOString(),progress:state.progress,wrong:state.wrong,streakDays:state.streakDays,quiz:state.quiz,lastActive:state.lastActive})}
+function exportAll(){download("indonesian-study-full-backup-"+today()+".json",{format:"indonesian-study-backup-v1",exportedAt:new Date().toISOString(),words:state.words,progress:state.progress,wrong:state.wrong,streakDays:state.streakDays,quiz:state.quiz,lastActive:state.lastActive})}
+function openImport(type){importType=type;$("fileInput").value="";$("fileInput").click()}
+function handleImportFile(e){let file=e.target.files[0];if(!file)return;let reader=new FileReader();reader.onload=()=>{try{let d=JSON.parse(reader.result);if(importType==="words"){let arr=Array.isArray(d)?d:d.words;if(!Array.isArray(arr))throw Error("文件里没有词汇数组");let incoming=arr.map(normalizeWord);let map=new Map(state.words.map(w=>[w.word.toLowerCase(),w]));incoming.forEach(w=>{let old=map.get(w.word.toLowerCase());if(old){w.id=old.id;map.set(w.word.toLowerCase(),w)}else map.set(w.word.toLowerCase(),w)});state.words=[...map.values()];save();renderAll();notify("词汇导入完成，已按单词合并重复项。")}else if(importType==="progress"){if(!d.progress||typeof d.progress!=="object")throw Error("文件里没有学习记录");state.progress={...state.progress,...d.progress};state.wrong=[...new Set([...(state.wrong||[]),...(d.wrong||[])])];state.streakDays=[...new Set([...(state.streakDays||[]),...(d.streakDays||[])])];state.quiz=d.quiz||state.quiz;state.lastActive=d.lastActive||state.lastActive;save();renderAll();notify("学习记录已导入。")}else{if(!Array.isArray(d.words)||!d.progress)throw Error("这不是完整备份文件");if(!confirm("恢复完整备份会覆盖当前词汇库和学习记录。确定继续吗？"))return;state={version:1,words:d.words.map(normalizeWord),progress:d.progress||{},wrong:d.wrong||[],streakDays:d.streakDays||[],quiz:d.quiz||{total:0,correct:0},lastActive:d.lastActive||""};save();renderAll();notify("完整备份已恢复。")} }catch(err){alert("导入失败："+err.message)}finally{e.target.value=""}};reader.readAsText(file)}
+document.querySelectorAll(".tab").forEach(b=>b.addEventListener("click",()=>switchTab(b.dataset.tab)));
+["search","topicFilter","levelFilter","statusFilter"].forEach(id=>$(id).addEventListener(id==="search"?"input":"change",renderWords));
+$("wordGrid").addEventListener("click",e=>{let b=e.target.closest("button");if(!b)return;if(b.dataset.speak){let w=state.words.find(x=>x.id===b.dataset.speak);if(w)speak(w.word)}if(b.dataset.edit)editWord(b.dataset.edit);if(b.dataset.learn){resetLearnQueue();let i=learnQueue.indexOf(b.dataset.learn);if(i<0){learnQueue=[b.dataset.learn];i=0}learnIndex=i;meaningVisible=true;switchTab("learn");renderLearn()}});
+$("speakWord").addEventListener("click",()=>{let w=activeLearnWord();if(w)speak(w.word)});$("speakExample").addEventListener("click",()=>{let w=activeLearnWord();if(w)speak(w?.example_id||w?.word||"")});$("revealBtn").addEventListener("click",()=>{meaningVisible=!meaningVisible;renderLearn()});$("markAgain").addEventListener("click",()=>{markWord(false);nextLearn()});$("markKnown").addEventListener("click",()=>{markWord(true);nextLearn()});$("nextCard").addEventListener("click",nextLearn);
+$("learnTopic").addEventListener("change",()=>{resetLearnQueue();renderLearn()});$("learnMode").addEventListener("change",()=>{resetLearnQueue();renderLearn()});
+$("newQuiz").addEventListener("click",()=>makeQuiz());$("quizArea").addEventListener("click",e=>{let a=e.target.closest("[data-answer]");if(a)answerQuiz(a.dataset.answer);let s=e.target.closest("[data-quiz-speak]");if(s){let w=state.words.find(x=>x.id===s.dataset.quizSpeak);if(w)speak(w.example_id||w.word)}});
+$("clearWrong").addEventListener("click",()=>{if(confirm("确定清除所有错题标记吗？学习记录中的答题次数会保留。")){state.wrong=[];save();renderAll();notify("已清除错题标记。")}});
+$("startReview").addEventListener("click",()=>{ $("learnMode").value="due";resetLearnQueue();if(!learnQueue.length){$("learnMode").value="wrong";resetLearnQueue()}switchTab("learn");renderLearn()});
+$("reviewList").addEventListener("click",e=>{let s=e.target.closest("[data-review-speak]"),l=e.target.closest("[data-review-learn]");if(s){let w=state.words.find(x=>x.id===s.dataset.reviewSpeak);if(w)speak(w.word)}if(l){let id=l.dataset.reviewLearn;learnQueue=[id];learnIndex=0;meaningVisible=true;switchTab("learn");renderLearn()}});
+$("wordForm").addEventListener("submit",formSave);$("resetForm").addEventListener("click",resetForm);
+$("exportWordsBtn").addEventListener("click",exportWords);$("exportProgressBtn").addEventListener("click",exportProgress);$("exportAllBtn").addEventListener("click",exportAll);
+$("importBtn").addEventListener("click",()=>$("importDialog").showModal());$("closeDialog").addEventListener("click",()=>$("importDialog").close());$("chooseWords").addEventListener("click",()=>{$("importDialog").close();openImport("words")});$("chooseProgress").addEventListener("click",()=>{$("importDialog").close();openImport("progress")});$("chooseAll").addEventListener("click",()=>{$("importDialog").close();openImport("all")});$("importWordsBtn").addEventListener("click",()=>openImport("words"));$("importProgressBtn").addEventListener("click",()=>openImport("progress"));$("fileInput").addEventListener("change",handleImportFile);
+renderAll();
+</script>
+</body>
+</html>
